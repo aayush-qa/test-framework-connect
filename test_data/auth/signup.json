@@ -1,0 +1,23 @@
+{
+  "_comment": "Signup payloads for MyApp",
+  "new_user": {
+    "first_name": "Test",
+    "last_name": "User",
+    "email": "testuser+{{timestamp}}@example.com",
+    "password": "Test@1234",
+    "confirm_password": "Test@1234",
+    "phone": "9800000000"
+  },
+  "duplicate_email": {
+    "email": "existing@example.com",
+    "expected_error": "Email already registered"
+  },
+  "invalid_email": {
+    "email": "notanemail",
+    "expected_error": "Enter a valid email address"
+  },
+  "weak_password": {
+    "password": "123",
+    "expected_error": "Password must be at least 8 characters"
+  }
+}

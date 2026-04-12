@@ -1,0 +1,21 @@
+{
+  "_comment": "Cart configurations per user persona",
+  "standard_bundle": {
+    "product_ids": [
+      "product-001",
+      "product-002"
+    ],
+    "expected_total": 39.98,
+    "shipping": "FREE",
+    "tax_rate": 0.08
+  },
+  "error_bundle": {
+    "product_ids": [
+      "product-002",
+      "product-003"
+    ],
+    "expected_total": 59.98,
+    "shipping": "FREE",
+    "tax_rate": 0.08
+  }
+}

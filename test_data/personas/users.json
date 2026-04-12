@@ -1,0 +1,31 @@
+{
+  "_comment": "User personas — shared across API and UI tests",
+  "standard_user": {
+    "type": "standard",
+    "username": "standard_user",
+    "password": "secret_sauce",
+    "can_checkout": true,
+    "cart_bundle": "standard_bundle"
+  },
+  "locked_out_user": {
+    "type": "locked",
+    "username": "locked_out_user",
+    "password": "secret_sauce",
+    "can_checkout": false
+  },
+  "error_user": {
+    "type": "error",
+    "username": "error_user",
+    "password": "secret_sauce",
+    "can_checkout": true,
+    "triggers_error": true,
+    "cart_bundle": "error_bundle"
+  },
+  "admin_user": {
+    "type": "admin",
+    "username": "admin_user",
+    "password": "secret_sauce",
+    "can_checkout": true,
+    "cart_bundle": "standard_bundle"
+  }
+}

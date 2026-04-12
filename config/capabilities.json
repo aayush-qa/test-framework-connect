@@ -1,0 +1,7 @@
+{
+  "app_package": "com.example.app",
+  "app_activity": "com.example.app.MainActivity",
+  "new_command_timeout": 300,
+  "no_reset": false,
+  "full_reset": false
+}

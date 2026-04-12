@@ -1,0 +1,16 @@
+{
+  "_comment": "Android-specific capabilities and locator overrides for MyApp",
+  "platform": "Android",
+  "automation_name": "UiAutomator2",
+  "app_path": "app/android/app-debug.apk",
+  "device_name": "emulator-5554",
+  "os_version": "13.0",
+  "implicit_wait": 10,
+  "explicit_wait": 30,
+  "locator_overrides": {
+    "login_button": "test-LOGIN",
+    "username_field": "test-Username",
+    "password_field": "test-Password",
+    "error_message": "test-Error message"
+  }
+}

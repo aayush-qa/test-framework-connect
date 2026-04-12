@@ -1,0 +1,17 @@
+{
+  "_comment": "iOS-specific capabilities and locator overrides for MyApp",
+  "platform": "iOS",
+  "automation_name": "XCUITest",
+  "app_path": "app/ios/app-debug.app",
+  "device_name": "iPhone 15",
+  "os_version": "17.0",
+  "udid": "",
+  "implicit_wait": 10,
+  "explicit_wait": 30,
+  "locator_overrides": {
+    "login_button": "login-button",
+    "username_field": "username-input",
+    "password_field": "password-input",
+    "error_message": "error-label"
+  }
+}

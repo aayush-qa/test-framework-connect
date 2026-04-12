@@ -1,0 +1,15 @@
+# Framework-level configuration
+timeout:
+  implicit: 10
+  explicit: 30
+
+logging:
+  level: INFO
+  file: reports/logs/framework.log
+
+allure:
+  results_dir: reports/allure-results
+
+appium:
+  host: 127.0.0.1
+  port: 4723

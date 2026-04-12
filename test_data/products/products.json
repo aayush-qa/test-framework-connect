@@ -1,0 +1,43 @@
+{
+  "_comment": "Product catalog for MyApp",
+  "catalog": [
+    {
+      "id": "product-001",
+      "name": "Sample Product One",
+      "price": 29.99,
+      "category": "main",
+      "featured_for": [
+        "standard_user",
+        "admin_user"
+      ]
+    },
+    {
+      "id": "product-002",
+      "name": "Sample Product Two",
+      "price": 9.99,
+      "category": "accessory",
+      "featured_for": [
+        "error_user"
+      ]
+    },
+    {
+      "id": "product-003",
+      "name": "Sample Product Three",
+      "price": 49.99,
+      "category": "main",
+      "featured_for": [
+        "standard_user"
+      ]
+    }
+  ],
+  "bundles": {
+    "standard_bundle": [
+      "product-001",
+      "product-002"
+    ],
+    "error_bundle": [
+      "product-002",
+      "product-003"
+    ]
+  }
+}
