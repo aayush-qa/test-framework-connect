@@ -3,7 +3,11 @@ test_data/loader.py
 -------------------
 Single entry point for all test data across the framework.
 Usage:
-    from test_data.loader import login_data, signup_data, users, products, platform_data
+    from test_data.loader import login_data, signup_data, users, products
+
+Note:
+    Platform-specific Appium capabilities are now loaded from config/capabilities.json
+    and managed by utils/driver_manager.py. Use that for all capability configuration.
 """
 
 import json
@@ -69,16 +73,5 @@ def cart_data() -> dict:
 
 
 # ── Platform ────────────────────────────────────────────────────────────────
-
-def platform_data(platform: str = None) -> dict:
-    """
-    Return platform-specific capabilities.
-    Reads PLATFORM env var if platform arg is not passed.
-    e.g. platform_data('android') or platform_data('ios')
-    """
-    if platform is None:
-        platform = os.getenv("PLATFORM", "android")
-    platform = platform.lower()
-    if platform not in ("android", "ios"):
-        raise ValueError(f"Unknown platform '{platform}'. Use 'android' or 'ios'.")
-    return _load("platform", f"{platform}.json")
+# NOTE: Platform-specific capabilities are now loaded from config/capabilities.json
+# This function is deprecated. Use DriverManager with config/capabilities.json instead.

@@ -1,9 +1,10 @@
 {
+  "_comment": "Appium capabilities (single source of truth). Loaded by conftest.py via DriverManager.",
   "platformName": "Android",
   "appium:automationName": "UiAutomator2",
   "appium:deviceName": "Pixel 9 Pro",
   "appium:app": "./app/android/april12BuildConnect.apk",
   "appium:ensureWebviewsHavePages": true,
   "appium:nativeWebScreenshot": true,
-  "appium.isReset": true
+  "appium:autoGrantPermissions": true
 }
