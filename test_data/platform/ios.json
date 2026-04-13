@@ -2,7 +2,7 @@
   "_comment": "iOS-specific capabilities and locator overrides for MyApp",
   "platform": "iOS",
   "automation_name": "XCUITest",
-  "app_path": "app/ios/app-debug.app",
+  "app_path": "app/ios/MyApp.app",
   "device_name": "iPhone 15",
   "os_version": "17.0",
   "udid": "",

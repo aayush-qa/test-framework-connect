@@ -9,6 +9,11 @@ try:
 except ImportError:
     UiAutomator2Options = None
 
+try:
+    from appium.options.ios import XCUITestOptions
+except ImportError:
+    XCUITestOptions = None
+
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 CONFIG_FILE = ROOT_DIR / "config" / "config.yaml"
@@ -16,11 +21,39 @@ CONFIG_FILE = ROOT_DIR / "config" / "config.yaml"
 
 class DriverManager:
     def __init__(self, caps: dict):
-        self.caps = caps
+        self.caps = self._normalize_caps(caps or {})
         self.driver = None
         self.host = "127.0.0.1"
         self.port = 4723
         self._load_config()
+
+    def _normalize_caps(self, caps: dict) -> dict:
+        normalized = caps.copy()
+
+        if "platform" in normalized and "platformName" not in normalized:
+            normalized["platformName"] = normalized.pop("platform")
+
+        if "automation_name" in normalized and "automationName" not in normalized:
+            normalized["automationName"] = normalized.pop("automation_name")
+
+        if "device_name" in normalized and "deviceName" not in normalized:
+            normalized["deviceName"] = normalized.pop("device_name")
+
+        if "app_path" in normalized and not normalized.get("app") and not normalized.get("appium:app"):
+            app_path = Path(normalized.pop("app_path"))
+            if not app_path.is_absolute():
+                app_path = (ROOT_DIR / app_path).resolve()
+            normalized["appium:app"] = str(app_path)
+
+        if "platformName" in normalized and isinstance(normalized["platformName"], str):
+            platform_name = normalized["platformName"].strip()
+            normalized["platformName"] = (
+                "iOS" if platform_name.lower() == "ios"
+                else "Android" if platform_name.lower() == "android"
+                else platform_name
+            )
+
+        return normalized
 
     def _load_config(self):
         if CONFIG_FILE.exists():
@@ -31,14 +64,16 @@ class DriverManager:
             self.port = appium_cfg.get("port", self.port)
 
     def _build_options(self):
-        if UiAutomator2Options is not None and self.caps.get("platformName", "").lower() == "android":
+        platform = self.caps.get("platformName", "").lower()
+
+        if platform == "android" and UiAutomator2Options is not None:
             options = UiAutomator2Options()
-            options.load_capabilities(self.caps)
-            return options
+        elif platform == "ios" and XCUITestOptions is not None:
+            options = XCUITestOptions()
+        else:
+            from appium.options.common import AppiumOptions
+            options = AppiumOptions()
 
-        from appium.options.common import AppiumOptions
-
-        options = AppiumOptions()
         options.load_capabilities(self.caps)
         return options
 
