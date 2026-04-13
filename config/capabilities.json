@@ -1,7 +1,8 @@
 {
-  "app_package": "com.example.app",
-  "app_activity": "com.example.app.MainActivity",
-  "new_command_timeout": 300,
-  "no_reset": false,
-  "full_reset": false
+  "platformName": "Android",
+  "appium:automationName": "UiAutomator2",
+  "appium:deviceName": "Pixel 9 Pro",
+  "appium:app": "./app/android/april12BuildConnect.apk",
+  "appium:ensureWebviewsHavePages": true,
+  "appium:nativeWebScreenshot": true
 }
